@@ -40,7 +40,7 @@ def test_results_can_be_equal_but_are_unique():
     assert bp1 is not bp2
 
 
-test_entities_data = [
+TEST_ENTITIES_DATA = (
     (
         [{"name": "e1", "quality": "normal", "count": 1}],
         [{"index": 1, "name": "e1", "quality": "normal", "comparator": "=", "count": 1}],
@@ -81,10 +81,10 @@ test_entities_data = [
             {"index": 4, "name": "assembling-machine-3", "quality": "uncommon", "comparator": "=", "count": 1},
         ],
     ),
-]
+)
 
 
-@pytest.mark.parametrize("entities, expected_filters", test_entities_data)
+@pytest.mark.parametrize("entities, expected_filters", TEST_ENTITIES_DATA)
 def test_entities(entities, expected_filters):
     bp = fbp.create_constant_combinator("", entities)
     assert bp["blueprint"]["entities"][0]["control_behavior"]["sections"]["sections"][0]["filters"] == expected_filters

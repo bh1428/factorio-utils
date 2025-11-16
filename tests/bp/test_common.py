@@ -33,5 +33,46 @@ def test_count_entities(bp_name: str):
     assert entities == test_bp["entities"]
 
 
+TEST_DICT = {
+    "one": {
+        "two": {
+            "three": 3,
+        },
+    },
+}
+GET_VALUE_PARAMETERS_NO_DEFAULT = (
+    (TEST_DICT, ("",), None),
+    (TEST_DICT, ("missing",), None),
+    (TEST_DICT, ("one",), TEST_DICT["one"]),
+    (TEST_DICT, ("one", "two"), TEST_DICT["one"]["two"]),
+    (TEST_DICT, ("one", "missing"), None),
+    (TEST_DICT, ("one", "two", "three"), TEST_DICT["one"]["two"]["three"]),
+    (TEST_DICT, ("one", "two", "missing"), None),
+)
+
+
+@pytest.mark.parametrize("test_dict, keys, expected", GET_VALUE_PARAMETERS_NO_DEFAULT)
+def test_get_value_no_default(test_dict, keys, expected):
+    value = fbp.get_value(test_dict, *keys)
+    assert value == expected
+
+
+GET_VALUE_PARAMETERS_WITH_DEFAULT = (
+    (TEST_DICT, ("",), "default", "default"),
+    (TEST_DICT, ("missing",), "default", "default"),
+    (TEST_DICT, ("one",), "default", TEST_DICT["one"]),
+    (TEST_DICT, ("one", "two"), "default", TEST_DICT["one"]["two"]),
+    (TEST_DICT, ("one", "missing"), "default", "default"),
+    (TEST_DICT, ("one", "two", "three"), "default", TEST_DICT["one"]["two"]["three"]),
+    (TEST_DICT, ("one", "two", "missing"), "default", "default"),
+)
+
+
+@pytest.mark.parametrize("test_dict, keys, default, expected", GET_VALUE_PARAMETERS_WITH_DEFAULT)
+def test_get_value_with_default(test_dict, keys, default, expected):
+    value = fbp.get_value(test_dict, *keys, default=default)
+    assert value == expected
+
+
 if __name__ == "__main__":
-    pytest.main(["-vv", "tests/bp/test_common.py"])
+    pytest.main(["-vv", "-s", "tests/bp/test_common.py"])

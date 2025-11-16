@@ -2700,4 +2700,17 @@ blueprints: dict[str, BlueprintTestDataType] = {
             {"name": "speed-module-3", "quality": "normal", "count": 1},
         ],
     },
+    "malformed": {
+        "b64_str": "0eNqrVkrKKU0tKMrMK1GyUqhWSs0rySzJTC0GcqKrlTLzyhJzMlOAnJKi0tTa2NpaAKRREVw=",
+        "bp": {
+            "blueprint": {
+                "entities": [
+                    {
+                        "invalid": True,
+                    }
+                ],
+            }
+        },
+        "entities": [],
+    },
 }

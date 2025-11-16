@@ -7,7 +7,7 @@ The structure of a Factorio blueprint is described here: https://wiki.factorio.c
     from a blueprint string, skip the first byte, base64 decode the string, and finally decompress using zlib inflate.
 """
 
-from .common import BlueprintType, count_entities, decode, encode
+from .common import BlueprintType, count_entities, decode, encode, get_value
 from .constant_combinator import create_constant_combinator
 
 __all__ = [
@@ -16,4 +16,5 @@ __all__ = [
     "create_constant_combinator",
     "decode",
     "encode",
+    "get_value",
 ]
