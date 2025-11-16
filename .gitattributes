@@ -1,0 +1,37 @@
+#
+# Auto detect text files and perform LF normalization
+#
+*                   text=auto
+
+#
+# You can find additional files to be added using:
+#     git ls-files | git check-attr -a --stdin | grep "text: auto"
+#
+
+#
+# Exclude files from exporting
+#
+.gitattributes      text export-ignore
+.gitignore          text export-ignore
+.gitkeep            text export-ignore
+.gitmodules         text export-ignore
+
+#
+# Always perform LF normalization
+#
+*.json              text
+*.md                text diff=markdown
+*.py                text diff=python
+*.toml              text
+LICENSE             text
+makefile            text
+
+#
+# Linux files which always have LF line endings at checkout
+#
+*requirements.txt   text eol=lf
+.python-version     text eol=lf
+
+#
+# Never perform LF normalization
+#

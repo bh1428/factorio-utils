@@ -1,0 +1,45 @@
+{
+    "editor.formatOnSave": true,
+    "python.analysis.autoFormatStrings": true,
+    "python.analysis.addImport.exactMatchOnly": true,
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.completeFunctionParens": false,
+    "python.analysis.typeCheckingMode": "basic",
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.coverage": true,
+        "**/.git": true,
+        "**/.pytest_cache": true,
+        "**/.vscode": true,
+        "**/*.egg-info": true,
+        "**/*.whl": true,
+        "**/build": true,
+        "**/coverage_html": true,
+        "**/dist": true
+    },
+    "pylint.importStrategy": "useBundled",
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "ruff.importStrategy": "useBundled",
+    "ruff.nativeServer": "on",
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+        },
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+    "cSpell.words": [
+        "compressobj",
+        "factorio",
+        "Hattem",
+        "pylint",
+        "pyproject",
+        "pytest",
+        "sdist",
+        "venv"
+    ]
+}
