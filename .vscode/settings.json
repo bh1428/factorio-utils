@@ -33,13 +33,18 @@
         "editor.defaultFormatter": "charliermarsh.ruff"
     },
     "cSpell.words": [
+        "aquilo",
         "compressobj",
         "factorio",
+        "fulgora",
         "Hattem",
+        "nauvis",
         "pylint",
         "pyproject",
         "pytest",
         "sdist",
-        "venv"
+        "unprioritised",
+        "venv",
+        "vulcanus"
     ]
 }

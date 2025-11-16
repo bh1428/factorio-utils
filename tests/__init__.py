@@ -1,1 +1,1 @@
-"""Test for factorio package"""
+"""Tests for factorio package"""
