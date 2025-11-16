@@ -45,10 +45,10 @@ def count_entities(blueprint: BlueprintType) -> ItemListType:
         items_counter.update((tile["name"], "normal") for tile in blueprint["blueprint"]["tiles"])
 
     items = dict(items_counter)
+    quality_order = {"normal": 0, "uncommon": 1, "rare": 2, "epic": 3, "legendary": 4}
     return sorted(
         [{"name": name, "quality": quality, "count": count} for (name, quality), count in items.items()],
-        key=lambda i: (i["count"], i["name"], i["quality"]),
-        reverse=True,
+        key=lambda i: (-i["count"], i["name"], quality_order[i["quality"]]),
     )
 
 

@@ -186,9 +186,9 @@ blueprints: dict[str, BlueprintTestDataType] = {
         "entities": [
             {"name": "efficiency-module", "quality": "normal", "count": 3},
             {"name": "bulk-inserter", "quality": "normal", "count": 2},
-            {"name": "requester-chest", "quality": "normal", "count": 1},
-            {"name": "passive-provider-chest", "quality": "normal", "count": 1},
             {"name": "assembling-machine-3", "quality": "normal", "count": 1},
+            {"name": "passive-provider-chest", "quality": "normal", "count": 1},
+            {"name": "requester-chest", "quality": "normal", "count": 1},
         ],
     },
     "nuclear_tank": {
@@ -249,12 +249,12 @@ blueprints: dict[str, BlueprintTestDataType] = {
         },
         "entities": [
             {"name": "battery-mk2-equipment", "quality": "normal", "count": 4},
-            {"name": "nuclear-fuel", "quality": "normal", "count": 2},
             {"name": "energy-shield-equipment", "quality": "normal", "count": 2},
-            {"name": "tank", "quality": "normal", "count": 1},
-            {"name": "fission-reactor-equipment", "quality": "normal", "count": 1},
-            {"name": "exoskeleton-equipment", "quality": "rare", "count": 1},
+            {"name": "nuclear-fuel", "quality": "normal", "count": 2},
             {"name": "exoskeleton-equipment", "quality": "normal", "count": 1},
+            {"name": "exoskeleton-equipment", "quality": "rare", "count": 1},
+            {"name": "fission-reactor-equipment", "quality": "normal", "count": 1},
+            {"name": "tank", "quality": "normal", "count": 1},
         ],
     },
     "space_ship": {
@@ -2521,24 +2521,24 @@ blueprints: dict[str, BlueprintTestDataType] = {
             {"name": "accumulator", "quality": "normal", "count": 15},
             {"name": "pipe-to-ground", "quality": "normal", "count": 14},
             {"name": "fast-inserter", "quality": "normal", "count": 13},
-            {"name": "underground-belt", "quality": "normal", "count": 8},
             {"name": "gun-turret", "quality": "normal", "count": 8},
-            {"name": "electric-furnace", "quality": "normal", "count": 4},
-            {"name": "decider-combinator", "quality": "normal", "count": 4},
-            {"name": "bulk-inserter", "quality": "normal", "count": 4},
+            {"name": "underground-belt", "quality": "normal", "count": 8},
             {"name": "asteroid-collector", "quality": "normal", "count": 4},
-            {"name": "thruster", "quality": "normal", "count": 3},
-            {"name": "splitter", "quality": "normal", "count": 3},
-            {"name": "speed-module-2", "quality": "normal", "count": 3},
-            {"name": "crusher", "quality": "normal", "count": 3},
-            {"name": "chemical-plant", "quality": "normal", "count": 3},
+            {"name": "bulk-inserter", "quality": "normal", "count": 4},
+            {"name": "decider-combinator", "quality": "normal", "count": 4},
+            {"name": "electric-furnace", "quality": "normal", "count": 4},
             {"name": "cargo-bay", "quality": "normal", "count": 3},
-            {"name": "small-lamp", "quality": "normal", "count": 2},
-            {"name": "long-handed-inserter", "quality": "normal", "count": 2},
-            {"name": "constant-combinator", "quality": "normal", "count": 2},
+            {"name": "chemical-plant", "quality": "normal", "count": 3},
+            {"name": "crusher", "quality": "normal", "count": 3},
+            {"name": "speed-module-2", "quality": "normal", "count": 3},
+            {"name": "splitter", "quality": "normal", "count": 3},
+            {"name": "thruster", "quality": "normal", "count": 3},
             {"name": "arithmetic-combinator", "quality": "normal", "count": 2},
-            {"name": "space-platform-hub", "quality": "normal", "count": 1},
+            {"name": "constant-combinator", "quality": "normal", "count": 2},
+            {"name": "long-handed-inserter", "quality": "normal", "count": 2},
+            {"name": "small-lamp", "quality": "normal", "count": 2},
             {"name": "assembling-machine-3", "quality": "normal", "count": 1},
+            {"name": "space-platform-hub", "quality": "normal", "count": 1},
         ],
     },
     "quality_assembler": {
@@ -2581,9 +2581,123 @@ blueprints: dict[str, BlueprintTestDataType] = {
         },
         "entities": [
             {"name": "efficiency-module-3", "quality": "epic", "count": 2},
+            {"name": "assembling-machine-3", "quality": "uncommon", "count": 1},
             {"name": "speed-module-3", "quality": "rare", "count": 1},
             {"name": "speed-module-3", "quality": "legendary", "count": 1},
-            {"name": "assembling-machine-3", "quality": "uncommon", "count": 1},
+        ],
+    },
+    "quality_sorting": {
+        "b64_str": (
+            "0eNq9ld1ugzAMhd8l10Hir9XgVSZUpcFF1ojDAlRDFe8+A5OoprIVhHoHJMfn2PmAmziXLVQOqRHpTaC2VIv0/SZqLEiVwzNSBkQqoA"
+            "TdOGtUQdCg9qpSsUaKz1aV2HS8oyVtjbEkeimQcvgSadDLp0vNqrDPpABqsEGY0ow33YlacwbHZeV/qSpbs5qzsCtX9IIwkoJDHhO2c"
+            "aCxulMTCzU63eIgnVZPc19kneH8HK8BM+XB/K6dugLIPWPztgQvGvuYNvI+OiFdOb113SSc72Ip6kbpD77qs34Y1F9VFwe9zipcaeWU"
+            "gw020UobqFBvsAlW2pRQAOWKi6z38gevbHD7BWO4HsYgmWF8cKx3hKr8qkhzP/vxuRNJ8Tj4PQ5/I2PBaxjzX8hYuMRYtIGxw7OMVc5"
+            "qqGukwmtpd8Q2jj164dgffn/hckGNQLrblVp/8bUJFld+sMgmM/ae/9lSXMHV47kfjmESJ8nhLYiSxI/7/huOzrKY"
+        ),
+        "bp": {
+            "blueprint": {
+                "entities": [
+                    {
+                        "entity_number": 1,
+                        "items": [
+                            {
+                                "id": {"name": "speed-module-3"},
+                                "items": {"in_inventory": [{"inventory": 4, "stack": 4}]},
+                            },
+                            {
+                                "id": {"name": "speed-module-3", "quality": "uncommon"},
+                                "items": {"in_inventory": [{"inventory": 4, "stack": 2}]},
+                            },
+                            {
+                                "id": {"name": "speed-module-3", "quality": "rare"},
+                                "items": {"in_inventory": [{"inventory": 4, "stack": 3}]},
+                            },
+                            {
+                                "id": {"name": "speed-module-3", "quality": "epic"},
+                                "items": {"in_inventory": [{"inventory": 4, "stack": 1}]},
+                            },
+                            {
+                                "id": {"name": "speed-module-3", "quality": "legendary"},
+                                "items": {"in_inventory": [{"inventory": 4, "stack": 0}]},
+                            },
+                        ],
+                        "name": "electromagnetic-plant",
+                        "position": {"x": -123, "y": 69},
+                        "recipe": "electronic-circuit",
+                        "recipe_quality": "normal",
+                    },
+                    {
+                        "entity_number": 2,
+                        "items": [
+                            {
+                                "id": {"name": "speed-module-3", "quality": "uncommon"},
+                                "items": {"in_inventory": [{"inventory": 4, "stack": 4}, {"inventory": 4, "stack": 3}]},
+                            },
+                            {
+                                "id": {"name": "speed-module-3", "quality": "rare"},
+                                "items": {"in_inventory": [{"inventory": 4, "stack": 1}]},
+                            },
+                            {
+                                "id": {"name": "speed-module-3", "quality": "epic"},
+                                "items": {"in_inventory": [{"inventory": 4, "stack": 0}]},
+                            },
+                            {
+                                "id": {"name": "speed-module-3", "quality": "legendary"},
+                                "items": {"in_inventory": [{"inventory": 4, "stack": 2}]},
+                            },
+                        ],
+                        "name": "electromagnetic-plant",
+                        "position": {"x": -119, "y": 69},
+                        "quality": "uncommon",
+                        "recipe": "advanced-circuit",
+                        "recipe_quality": "normal",
+                    },
+                    {
+                        "entity_number": 3,
+                        "items": [
+                            {
+                                "id": {"name": "speed-module-3", "quality": "epic"},
+                                "items": {"in_inventory": [{"inventory": 4, "stack": 3}]},
+                            },
+                            {
+                                "id": {"name": "speed-module-3", "quality": "legendary"},
+                                "items": {"in_inventory": [{"inventory": 4, "stack": 4}]},
+                            },
+                            {
+                                "id": {"name": "efficiency-module-3", "quality": "rare"},
+                                "items": {
+                                    "in_inventory": [
+                                        {"inventory": 4, "stack": 0},
+                                        {"inventory": 4, "stack": 1},
+                                        {"inventory": 4, "stack": 2},
+                                    ]
+                                },
+                            },
+                        ],
+                        "name": "electromagnetic-plant",
+                        "position": {"x": -115, "y": 69},
+                        "quality": "uncommon",
+                        "recipe": "processing-unit",
+                        "recipe_quality": "normal",
+                    },
+                ],
+                "icons": [
+                    {"index": 1, "signal": {"name": "electromagnetic-plant", "quality": "uncommon"}},
+                    {"index": 2, "signal": {"name": "electromagnetic-plant"}},
+                ],
+                "item": "blueprint",
+                "version": 562949958139904,
+            }
+        },
+        "entities": [
+            {"name": "efficiency-module-3", "quality": "rare", "count": 3},
+            {"name": "speed-module-3", "quality": "uncommon", "count": 3},
+            {"name": "speed-module-3", "quality": "epic", "count": 3},
+            {"name": "speed-module-3", "quality": "legendary", "count": 3},
+            {"name": "electromagnetic-plant", "quality": "uncommon", "count": 2},
+            {"name": "speed-module-3", "quality": "rare", "count": 2},
+            {"name": "electromagnetic-plant", "quality": "normal", "count": 1},
+            {"name": "speed-module-3", "quality": "normal", "count": 1},
         ],
     },
 }

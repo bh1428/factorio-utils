@@ -34,4 +34,4 @@ def test_count_entities(bp_name: str):
 
 
 if __name__ == "__main__":
-    pytest.main(["-vv", "tests/bp/test_common.py::test_count_entities"])
+    pytest.main(["-vv", "tests/bp/test_common.py"])
