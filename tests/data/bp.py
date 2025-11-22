@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-"""Factorio blueprint examples"""
+"""Factorio blueprint examples."""
 
 from typing import TypedDict
 

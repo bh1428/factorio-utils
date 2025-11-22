@@ -1,4 +1,4 @@
-"""factorio.bp - blueprints
+"""factorio.bp - blueprints.
 
 The structure of a Factorio blueprint is described here: https://wiki.factorio.com/Blueprint_string_format:
     A blueprint string is a JSON representation of the blueprint, compressed with zlib deflate using compression

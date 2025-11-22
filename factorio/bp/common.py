@@ -1,4 +1,4 @@
-"""factorio.bp.common - common functionality"""
+"""factorio.bp.common - common functionality."""
 
 import base64
 import collections
@@ -13,7 +13,7 @@ QUALITY_ORDER = {"normal": 0, "uncommon": 1, "rare": 2, "epic": 3, "legendary": 
 
 
 def get_value(a_dict: dict[str, Any], *keys: str, default: Any = None) -> Any:
-    """Get a value from a dictionary (optionally within another dictionary)
+    """Get a value from a dictionary (optionally within another dictionary).
 
     Args:
         a_dict (dict[str, Any]): main dictionary
@@ -33,7 +33,7 @@ def get_value(a_dict: dict[str, Any], *keys: str, default: Any = None) -> Any:
 
 
 def count_entities(blueprint: BlueprintType) -> ItemListType:
-    """Count all entities in a blueprint
+    """Count all entities in a blueprint.
 
     Args:
         blueprint (BlueprintType): blueprint to enumerate
@@ -79,7 +79,7 @@ def count_entities(blueprint: BlueprintType) -> ItemListType:
 
 
 def decode(b64_data: str) -> BlueprintType:
-    """Decode a blueprint string
+    """Decode a blueprint string.
 
     Args:
         b64_data (str): BASE64 encoded blueprint string
@@ -94,7 +94,7 @@ def decode(b64_data: str) -> BlueprintType:
 
 
 def encode(blueprint: BlueprintType, version: int = 0) -> str:
-    """Encode a data structure as a blueprint string
+    """Encode a data structure as a blueprint string.
 
     Nothing is checked: if you throw in garbage you will get garbage out.
 
