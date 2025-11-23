@@ -20,13 +20,12 @@ BLUEPRINT_TEMPLATE = {
             }
         ],
         "item": "blueprint",
-        "label": "",
         "version": 562949956239363,
     }
 }
 
 
-def create_constant_combinator(name: str, signals: ItemListType) -> BlueprintType:
+def create_constant_combinator(signals: ItemListType, name: None | str = None) -> BlueprintType:
     """Create a constant combinator from a set of signals.
 
     Args:
@@ -47,6 +46,7 @@ def create_constant_combinator(name: str, signals: ItemListType) -> BlueprintTyp
     sections_0 = blueprint["blueprint"]["entities"][0]["control_behavior"]["sections"]["sections"][0]
     sections_0["filters"] = filters
 
-    blueprint["blueprint"]["label"] = f"cc_{name}"
+    if (name is not None) and (name := name.strip()):
+        blueprint["blueprint"]["label"] = name
 
     return blueprint

@@ -4,7 +4,7 @@
 import pytest
 
 import factorio.bp as fbp
-from tests.data.bp import blueprints
+from tests.data.blueprints import blueprints
 
 # pylint: disable=missing-function-docstring
 
