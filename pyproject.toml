@@ -24,7 +24,7 @@ dev = [
     "pytest-cov",
 ]
 
-[project.scripts]
+[project.gui-scripts]
 factorio-utils = "factorio.gui.gui:main"
 
 [build-system]
