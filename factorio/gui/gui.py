@@ -82,7 +82,6 @@ class App:
         self.bp_text.tag_remove("found", "1.0", tk.END)
         self.positions = []
         self.current_idx = -1
-        self.search_term.set("")
         self.search_btn.configure(state=tk.DISABLED)  # type: ignore
 
     def _update_status_bar(self, message: str) -> None:
@@ -94,6 +93,7 @@ class App:
         self.bp_text.delete(1.0, tk.END)
         self.bp_text.insert(1.0, blueprint_text)
         self._reset_search()
+        self.search_term.set("")
         self._update_status_bar(message)
 
     def on_paste_btn(self) -> None:
