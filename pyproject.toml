@@ -24,6 +24,9 @@ dev = [
     "pytest-cov",
 ]
 
+[project.scripts]
+factorio-utils = "factorio.gui.gui:main"
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"

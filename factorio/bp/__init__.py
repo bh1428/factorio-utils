@@ -11,6 +11,7 @@ from .common import BlueprintType, ItemListType, count_entities, decode, encode,
 from .constant_combinator import (
     FilterType,
     FilterTypeList,
+    blueprint_to_constant_combinator,
     create_constant_combinator,
 )
 
@@ -24,4 +25,5 @@ __all__ = [
     "decode",
     "encode",
     "get_value",
+    "blueprint_to_constant_combinator",
 ]

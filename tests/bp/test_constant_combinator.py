@@ -4,6 +4,7 @@
 import pytest
 
 import factorio.bp as fbp
+from tests.data.blueprints import blueprints
 from tests.data.entities import entities
 
 # pylint: disable=missing-function-docstring
@@ -53,6 +54,25 @@ def test_entities(entity: str):
         bp["blueprint"]["entities"][0]["control_behavior"]["sections"]["sections"][0]["filters"]
         == test_entity["filters"]
     )
+
+
+@pytest.mark.parametrize("bp_name", blueprints.keys())
+def test_blueprint_to_constant_combinator_check_label(bp_name):
+    bp = blueprints[bp_name]
+    cc_bp = fbp.blueprint_to_constant_combinator(bp["bp"])
+    if "label" in bp["bp"]["blueprint"]:
+        assert cc_bp["blueprint"]["label"] == bp["bp"]["blueprint"]["label"]
+    else:
+        assert "label" not in cc_bp["blueprint"]
+
+
+@pytest.mark.parametrize("bp_name", blueprints.keys())
+def test_blueprint_to_constant_combinator_check_items(bp_name):
+    bp = blueprints[bp_name]
+    cc_bp = fbp.blueprint_to_constant_combinator(bp["bp"])
+    filters = cc_bp["blueprint"]["entities"][0]["control_behavior"]["sections"]["sections"][0]["filters"]
+    entities_from_filterts = [{"name": f["name"], "quality": f["quality"], "count": f["count"]} for f in filters]
+    assert entities_from_filterts == bp["entities"]
 
 
 if __name__ == "__main__":

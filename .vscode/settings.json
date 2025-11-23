@@ -38,13 +38,21 @@
         "factorio",
         "fulgora",
         "Hattem",
+        "ipady",
         "nauvis",
+        "nwes",
+        "padx",
+        "pady",
         "pylint",
         "pyproject",
         "pytest",
         "sdist",
+        "stopindex",
+        "textvariable",
         "unprioritised",
         "venv",
-        "vulcanus"
+        "vulcanus",
+        "xscrollcommand",
+        "yscrollcommand"
     ]
 }

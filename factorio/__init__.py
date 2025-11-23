@@ -1,3 +1,3 @@
 """Package factorio"""
 
-__version__ = "2025.11.16"
+__version__ = "2025.11.23"

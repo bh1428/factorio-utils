@@ -3,7 +3,7 @@
 import copy
 from typing import TypedDict
 
-from .common import BlueprintType, ItemListType
+from .common import BlueprintType, ItemListType, count_entities
 
 FilterType = TypedDict("FilterType", {"index": int, "name": str, "quality": str, "comparator": str, "count": int})
 FilterTypeList = list[FilterType]
@@ -24,6 +24,11 @@ BLUEPRINT_TEMPLATE = {
     }
 }
 
+# some items must be translated (there are probably more...)
+TRANSLATE_ENTITIES = {
+    "straight-rail": "rail",
+}
+
 
 def create_constant_combinator(signals: ItemListType, name: None | str = None) -> BlueprintType:
     """Create a constant combinator from a set of signals.
@@ -37,7 +42,13 @@ def create_constant_combinator(signals: ItemListType, name: None | str = None) -
     """
 
     def create_filter(index: int, name: str, quality: str, count: int) -> FilterType:
-        return {"index": index, "name": name, "quality": quality, "comparator": "=", "count": count}
+        return {
+            "index": index,
+            "name": TRANSLATE_ENTITIES.get(name, name),
+            "quality": quality,
+            "comparator": "=",
+            "count": count,
+        }
 
     filters = [create_filter(i, item["name"], item["quality"], item["count"]) for i, item in enumerate(signals, 1)]
 
@@ -50,3 +61,17 @@ def create_constant_combinator(signals: ItemListType, name: None | str = None) -
         blueprint["blueprint"]["label"] = name
 
     return blueprint
+
+
+def blueprint_to_constant_combinator(blueprint: BlueprintType) -> BlueprintType:
+    """Create a constant combinator blueprint with all items in a blueprint.
+
+    Args:
+        name (str): name of the constant combinator blueprint
+        blueprint (BlueprintType): blueprint to be added as signals to the constant combinator
+
+    Returns:
+        BlueprintType: constant combinator blueprint
+    """
+    name = blueprint["blueprint"]["label"] if "label" in blueprint["blueprint"] else None
+    return create_constant_combinator(count_entities(blueprint), name)
