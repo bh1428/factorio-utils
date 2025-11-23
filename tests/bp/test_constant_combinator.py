@@ -67,12 +67,15 @@ def test_blueprint_to_constant_combinator_check_label(bp_name):
 
 
 @pytest.mark.parametrize("bp_name", blueprints.keys())
-def test_blueprint_to_constant_combinator_check_items(bp_name):
+def test_blueprint_to_constant_combinator_check_entities(bp_name):
     bp = blueprints[bp_name]
     cc_bp = fbp.blueprint_to_constant_combinator(bp["bp"])
     filters = cc_bp["blueprint"]["entities"][0]["control_behavior"]["sections"]["sections"][0]["filters"]
-    entities_from_filterts = [{"name": f["name"], "quality": f["quality"], "count": f["count"]} for f in filters]
-    assert entities_from_filterts == bp["entities"]
+    entities_from_filters = [{"name": f["name"], "quality": f["quality"], "count": f["count"]} for f in filters]
+    if "entities_translated" not in bp:
+        assert entities_from_filters == bp["entities"]
+    else:
+        assert entities_from_filters == bp["entities_translated"]
 
 
 if __name__ == "__main__":

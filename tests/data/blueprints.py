@@ -1,13 +1,19 @@
 """Factorio blueprint examples."""
 
-from typing import TypedDict
+from typing import NotRequired, TypedDict
 
-from factorio.bp.common import BlueprintType, ItemListType
+from factorio.bp.common import BlueprintType, EntityListType
 
 # pylint: disable=too-many-lines
 
 BlueprintTestDataType = TypedDict(
-    "BlueprintTestDataType", {"b64_str": str, "bp": BlueprintType, "entities": ItemListType}
+    "BlueprintTestDataType",
+    {
+        "b64_str": str,
+        "bp": BlueprintType,
+        "entities": EntityListType,
+        "entities_translated": NotRequired[EntityListType],
+    },
 )
 
 blueprints: dict[str, BlueprintTestDataType] = {
@@ -2711,5 +2717,70 @@ blueprints: dict[str, BlueprintTestDataType] = {
             }
         },
         "entities": [],
+    },
+    "rails": {
+        "b64_str": (
+            "0eNqdle9ugyAUxd/lfraJoIj4Kkuz+Id0JIodYrPG+O5D29kmo9vFjyL3d869eGSCqh3l2ShtoZhA1b0eoHibYFAnXbbLmi47CQWYUr"
+            "UwR6B0I7+gIHP0alMEn2PZKntdF4x8qqLzMQKprbJK3nTWh+u7HrtKGoeNflCDdbDThz3cmed+cFW9XtQWfeK2OgWaJbNH8BeYosE02"
+            "cAeTrJx6tFcZLNSDpWHE4s7h6EMpuGd48AM7ZgkT+BGGVnf3lKMTIaWoQ//Hg4PPygvJ8f7YS/a9lBF+Clx1CmROLxv7uub7IiQwFnc"
+            "kSHhtegPUfmHRR7jLKb7yKEfO2HBQ+YE10EWPGRH9oE4ehQbKP4/ACTfg/WBwqPEkb/68Cg58nIzKSs7V/W4EiO4SDOsBSyjIhWC5SQ"
+            "RIk7n+Rt6WVoh"
+        ),
+        "bp": {
+            "blueprint": {
+                "icons": [
+                    {"signal": {"name": "rail"}, "index": 1},
+                    {"signal": {"name": "rail", "quality": "rare"}, "index": 2},
+                ],
+                "entities": [
+                    {"entity_number": 1, "name": "straight-rail", "position": {"x": 111, "y": 263}, "quality": "rare"},
+                    {"entity_number": 2, "name": "straight-rail", "position": {"x": 123, "y": 263}},
+                    {"entity_number": 3, "name": "curved-rail-b", "position": {"x": 109, "y": 265}, "quality": "rare"},
+                    {"entity_number": 4, "name": "straight-rail", "position": {"x": 111, "y": 265}, "quality": "rare"},
+                    {
+                        "entity_number": 5,
+                        "name": "curved-rail-b",
+                        "position": {"x": 113, "y": 265},
+                        "direction": 2,
+                        "quality": "rare",
+                    },
+                    {"entity_number": 6, "name": "curved-rail-b", "position": {"x": 121, "y": 265}},
+                    {"entity_number": 7, "name": "straight-rail", "position": {"x": 123, "y": 265}},
+                    {"entity_number": 8, "name": "curved-rail-b", "position": {"x": 125, "y": 265}, "direction": 2},
+                    {"entity_number": 9, "name": "straight-rail", "position": {"x": 111, "y": 267}, "quality": "rare"},
+                    {"entity_number": 10, "name": "straight-rail", "position": {"x": 123, "y": 267}},
+                    {"entity_number": 11, "name": "straight-rail", "position": {"x": 111, "y": 269}, "quality": "rare"},
+                    {"entity_number": 12, "name": "straight-rail", "position": {"x": 123, "y": 269}},
+                    {"entity_number": 13, "name": "curved-rail-a", "position": {"x": 111, "y": 270}, "quality": "rare"},
+                    {
+                        "entity_number": 14,
+                        "name": "curved-rail-a",
+                        "position": {"x": 111, "y": 270},
+                        "direction": 2,
+                        "quality": "rare",
+                    },
+                    {"entity_number": 15, "name": "straight-rail", "position": {"x": 111, "y": 271}, "quality": "rare"},
+                    {"entity_number": 16, "name": "straight-rail", "position": {"x": 123, "y": 271}},
+                    {"entity_number": 17, "name": "curved-rail-a", "position": {"x": 123, "y": 270}, "direction": 2},
+                    {"entity_number": 18, "name": "curved-rail-a", "position": {"x": 123, "y": 270}},
+                    {"entity_number": 19, "name": "straight-rail", "position": {"x": 111, "y": 273}, "quality": "rare"},
+                    {"entity_number": 20, "name": "straight-rail", "position": {"x": 123, "y": 273}},
+                ],
+                "item": "blueprint",
+                "version": 562949958139904,
+            },
+        },
+        "entities": [
+            {"name": "straight-rail", "quality": "normal", "count": 6},
+            {"name": "straight-rail", "quality": "rare", "count": 6},
+            {"name": "curved-rail-a", "quality": "normal", "count": 2},
+            {"name": "curved-rail-a", "quality": "rare", "count": 2},
+            {"name": "curved-rail-b", "quality": "normal", "count": 2},
+            {"name": "curved-rail-b", "quality": "rare", "count": 2},
+        ],
+        "entities_translated": [
+            {"name": "rail", "quality": "normal", "count": 18},
+            {"name": "rail", "quality": "rare", "count": 18},
+        ],
     },
 }

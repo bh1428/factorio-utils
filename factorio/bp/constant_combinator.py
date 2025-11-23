@@ -1,14 +1,10 @@
 """factorio.bp.constant_combinator - create a constant combinator from a blueprint."""
 
 import copy
-from typing import TypedDict
 
-from .common import BlueprintType, ItemListType, count_entities
+from .common import BlueprintType, ConvertEntitiesType, EntityListType, FilterType, count_entities
 
-FilterType = TypedDict("FilterType", {"index": int, "name": str, "quality": str, "comparator": str, "count": int})
-FilterTypeList = list[FilterType]
-
-BLUEPRINT_TEMPLATE = {
+BLUEPRINT_TEMPLATE: BlueprintType = {
     "blueprint": {
         "icons": [{"signal": {"name": "constant-combinator"}, "index": 1}],
         "entities": [
@@ -24,36 +20,35 @@ BLUEPRINT_TEMPLATE = {
     }
 }
 
-# some items must be translated (there are probably more...)
-TRANSLATE_ENTITIES = {
-    "straight-rail": "rail",
+# some entities must be converted (there are probably more...)
+# for example: you need 3 'rail' segments to build one 'curved-rail-a'
+CONVERT_ENTITIES: ConvertEntitiesType = {
+    # "from_entity": ("to_entity", count)
+    "straight-rail": ("rail", 1),
+    "curved-rail-a": ("rail", 3),
+    "curved-rail-b": ("rail", 3),
 }
 
 
-def create_constant_combinator(signals: ItemListType, name: None | str = None) -> BlueprintType:
+def create_constant_combinator(signals: EntityListType, name: None | str = None) -> BlueprintType:
     """Create a constant combinator from a set of signals.
 
     Args:
         name (str): name of the blueprint
-        signals (ItemListType): signal list for the blueprint
+        signals (EntityListType): signal list for the blueprint
 
     Returns:
         BlueprintType: blueprint for a constant combinator
     """
 
     def create_filter(index: int, name: str, quality: str, count: int) -> FilterType:
-        return {
-            "index": index,
-            "name": TRANSLATE_ENTITIES.get(name, name),
-            "quality": quality,
-            "comparator": "=",
-            "count": count,
-        }
+        return {"index": index, "name": name, "quality": quality, "comparator": "=", "count": count}
 
-    filters = [create_filter(i, item["name"], item["quality"], item["count"]) for i, item in enumerate(signals, 1)]
+    filters = [
+        create_filter(i, signal["name"], signal["quality"], signal["count"]) for i, signal in enumerate(signals, 1)
+    ]
 
     blueprint = copy.deepcopy(BLUEPRINT_TEMPLATE)
-
     sections_0 = blueprint["blueprint"]["entities"][0]["control_behavior"]["sections"]["sections"][0]
     sections_0["filters"] = filters
 
@@ -64,7 +59,7 @@ def create_constant_combinator(signals: ItemListType, name: None | str = None) -
 
 
 def blueprint_to_constant_combinator(blueprint: BlueprintType) -> BlueprintType:
-    """Create a constant combinator blueprint with all items in a blueprint.
+    """Create a constant combinator blueprint with all entities in a blueprint as signals.
 
     Args:
         name (str): name of the constant combinator blueprint
@@ -74,4 +69,4 @@ def blueprint_to_constant_combinator(blueprint: BlueprintType) -> BlueprintType:
         BlueprintType: constant combinator blueprint
     """
     name = blueprint["blueprint"]["label"] if "label" in blueprint["blueprint"] else None
-    return create_constant_combinator(count_entities(blueprint), name)
+    return create_constant_combinator(count_entities(blueprint, CONVERT_ENTITIES), name)

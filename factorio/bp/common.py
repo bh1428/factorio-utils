@@ -6,14 +6,19 @@ import json
 import zlib
 from typing import Any, TypedDict
 
+# types
 type BlueprintType = dict[str, dict[str, Any]]
-ItemListType = list[TypedDict("ItemListType", {"name": str, "quality": str, "count": int})]
+EntityListType = list[TypedDict("EntityListType", {"name": str, "quality": str, "count": int})]
+FilterType = TypedDict("FilterType", {"index": int, "name": str, "quality": str, "comparator": str, "count": int})
+FilterTypeList = list[FilterType]
+type ConvertEntitiesType = dict[str, tuple[str, int]]
 
-QUALITY_ORDER = {"normal": 0, "uncommon": 1, "rare": 2, "epic": 3, "legendary": 4}
+# sort quality items in ascending quality
+QUALITY_SORT_ORDER = {"normal": 0, "uncommon": 1, "rare": 2, "epic": 3, "legendary": 4}
 
 
 def get_value(a_dict: dict[str, Any], *keys: str, default: Any = None) -> Any:
-    """Get a value from a dictionary (optionally within another dictionary).
+    """Helper to get a value from a dictionary (optionally within another dictionary).
 
     Args:
         a_dict (dict[str, Any]): main dictionary
@@ -32,24 +37,30 @@ def get_value(a_dict: dict[str, Any], *keys: str, default: Any = None) -> Any:
     return result
 
 
-def count_entities(blueprint: BlueprintType) -> ItemListType:
+def count_entities(blueprint: BlueprintType, conversions: None | ConvertEntitiesType = None) -> EntityListType:
     """Count all entities in a blueprint.
 
     Args:
-        blueprint (BlueprintType): blueprint to enumerate
+        blueprint (BlueprintType): blueprint to enumerate.
+        conversions (None | ConvertEntitiesType): optional conversion dictionary
+            to map entities to other entities.
 
     Returns:
-        list[ItemListType]: list of entities and their number in the blueprint
+        EntityListType: list of entities and their number in the blueprint
     """
-    items_counter = collections.Counter()
+    entity_counter = collections.Counter()
     for entity in blueprint["blueprint"]["entities"]:
         # main entity
         if not (name := get_value(entity, "name")):
             continue
         quality = get_value(entity, "quality", default="normal")
-        items_counter.update(((name, quality),))
+        if not conversions:
+            entity_counter.update(((name, quality),))
+        else:
+            name, count = conversions.get(name, (name, 1))
+            entity_counter.update([(name, quality) for _ in range(count)])
 
-        # entity modules
+        # entity modules (do not need to be converted)
         for item in get_value(entity, "items", default=[]):
             modules = []
             if name := get_value(item, "id", "name"):
@@ -58,23 +69,23 @@ def count_entities(blueprint: BlueprintType) -> ItemListType:
                 for in_inventory in get_value(item, "items", "in_inventory", default=[]):
                     if "stack" in in_inventory:
                         modules.append(module)
-            items_counter.update(modules)
+            entity_counter.update(modules)
 
-        # entity grid
+        # entity grid (does not need to be converted)
         for grid_item in get_value(entity, "grid", default=[]):
             if name := get_value(grid_item, "equipment", "name"):
                 quality = get_value(grid_item, "equipment", "quality", default="normal")
-                items_counter.update(((name, quality),))
+                entity_counter.update(((name, quality),))
 
-    # tiles
+    # tiles (do not need to be converted)
     if tiles := get_value(blueprint, "blueprint", "tiles"):
-        items_counter.update((tile["name"], "normal") for tile in tiles)  # tiles are always normal quality
+        entity_counter.update((tile["name"], "normal") for tile in tiles)  # tiles are always normal quality
 
-    # sort
-    items = dict(items_counter)
+    # sort by count (desc), name (asc), quality (predefined)
+    entities = dict(entity_counter)
     return sorted(
-        [{"name": name, "quality": quality, "count": count} for (name, quality), count in items.items()],
-        key=lambda i: (-i["count"], i["name"], QUALITY_ORDER[i["quality"]]),
+        [{"name": name, "quality": quality, "count": count} for (name, quality), count in entities.items()],
+        key=lambda i: (-i["count"], i["name"], QUALITY_SORT_ORDER[i["quality"]]),
     )
 
 

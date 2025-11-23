@@ -2,17 +2,16 @@
 
 from typing import TypedDict
 
-from factorio.bp.common import ItemListType
-from factorio.bp.constant_combinator import FilterTypeList
+from factorio.bp.common import EntityListType, FilterTypeList
 
-EntityTestDataType = TypedDict("EntityTestDataType", {"entities": ItemListType, "filters": FilterTypeList})
+EntityTestDataType = TypedDict("EntityTestDataType", {"entities": EntityListType, "filters": FilterTypeList})
 
 entities: dict[str, EntityTestDataType] = {
-    "one_item": {
+    "one_entity": {
         "entities": [{"name": "e1", "quality": "normal", "count": 1}],
         "filters": [{"index": 1, "name": "e1", "quality": "normal", "comparator": "=", "count": 1}],
     },
-    "two_items": {
+    "two_entities": {
         "entities": [
             {"name": "e1", "quality": "normal", "count": 2},
             {"name": "e2", "quality": "normal", "count": 1},
@@ -22,7 +21,7 @@ entities: dict[str, EntityTestDataType] = {
             {"index": 2, "name": "e2", "quality": "normal", "comparator": "=", "count": 1},
         ],
     },
-    "three_items": {
+    "three_entities": {
         "entities": [
             {"name": "e3", "quality": "normal", "count": 1},
             {"name": "e2", "quality": "epic", "count": 2},
