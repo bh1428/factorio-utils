@@ -15,7 +15,7 @@
 
 # project / build properties
 PACKAGE := factorio
-PYTHON_VERSION := 3.14.0
+PYTHON_VERSION := 3.14.1
 VENV_DIR := .venv
 BUILD_DIR := build
 BUILD_TARGET_DIR := dist
